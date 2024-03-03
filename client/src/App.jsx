@@ -1,21 +1,37 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import PrivateRoute from './pages/PrivateRoute';
+import Signup from './pages/Signup';
+
+function Main() {
+  return (
+    <div>
+      <div className="fixed w-full top-0 z-10">
+        <Navbar />
+      </div>
+      <Home />
+    </div>
+  )
+}
 
 function App() {
-
+  const isAuthenticated = true;
   return (
     <>
-      <div>
-        <div className="fixed w-full top-0 z-10">
-          <Navbar />
-        </div>
-        <Home />
-
-        {/* <Signup /> */}
-        {/* <Login /> */}
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Signup />} />
+          {/* <PrivateRoute
+            path="/dashboard"
+            component={Dashboard}
+            isAuthenticated={isAuthenticated}
+          /> */}
+        </Routes>
+      </Router>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import InputField from '../components/InputField';
+import { Link } from 'react-router-dom';
 
 function Signup() {
 
@@ -12,8 +13,8 @@ function Signup() {
             <div className="absolute bottom-14 rounded-full left-96 h-96 w-96 bg-red-600"></div>
             <div className="absolute top-14 rounded-full right-96 h-48 w-48 bg-fuchsia-700"></div>
 
-            <div className="absolute bg-black opacity-90 w-2/3">
-                <button className="text-white p-3">{"<- Back to Login Page"}</button>
+            <div className="absolute bg-black opacity-90 w-3/4 pb-4 pt-2">
+                <Link to="/login" className="text-white mx-3">{"<- Back to Login Page"}</Link>
                 <p className="text-white font-semibold text-center text-2xl">Sign Up</p>
                 <InputField htmlfor="username" label="Username" type="text" placeholder="Enter your Username" isRequired />
                 <InputField htmlfor="phnum" label="Phone Number" type="tel" placeholder="Enter your Phone Number" isRequired />
@@ -32,9 +33,7 @@ function Signup() {
                         pattern="[0-9]*"
                     />
                 </div>
-
                 <button className="bg-white text-black mx-5 px-3 py-1 mt-6 font-semibold text-lg rounded-md">Enter</button>
-                <p className="text-white mx-5 mt-3 cursor-pointer mb-4">Don't have an account? <span className='font-bold'>Signup now</span></p>
             </div>
 
         </div>
