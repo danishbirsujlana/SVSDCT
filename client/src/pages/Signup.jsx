@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import TogglePill from '../components/Toggle'
+import React from 'react'
 import InputField from '../components/InputField';
 
 function Signup() {
-    const [st, setSt] = useState(1);
 
     return (
         <div className="relative h-screen bg-white flex justify-center items-center">
@@ -14,20 +12,29 @@ function Signup() {
             <div className="absolute bottom-14 rounded-full left-96 h-96 w-96 bg-red-600"></div>
             <div className="absolute top-14 rounded-full right-96 h-48 w-48 bg-fuchsia-700"></div>
 
-            <div className="absolute bg-black opacity-90 w-2/3 h-2/3">
+            <div className="absolute bg-black opacity-90 w-2/3">
                 <button className="text-white p-3">{"<- Back to Login Page"}</button>
                 <p className="text-white font-semibold text-center text-2xl">Sign Up</p>
-                <div className="flex justify-center items-center mt-4">
-                    <TogglePill activeOption={st} setActiveOption={setSt} />
+                <InputField htmlfor="username" label="Username" type="text" placeholder="Enter your Username" isRequired />
+                <InputField htmlfor="phnum" label="Phone Number" type="tel" placeholder="Enter your Phone Number" isRequired />
+                <InputField htmlfor="password" label="Password" type="password" placeholder="Enter your Password" isRequired />
+                <InputField htmlfor="cnfpassword" label="Confirm Password" type="password" placeholder="Renter your Password" isRequired />
+
+                <div className="mx-5 mt-4">
+                    <label htmlFor="otp" className="block text-white text-sm font-bold mb-2">Enter 6 Digit OTP:</label>
+                    <input
+                        type="number"
+                        id="otp"
+                        className="w-full px-3 py-2 border rounded-md focus:outline-none"
+                        placeholder="OTP"
+                        maxLength="6"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                    />
                 </div>
-                {st === 2 ? (
-                    <InputField htmlfor="email" label="Email" type="email" placeholder="Enter your Email" />
-                ) : (
-                    <InputField htmlfor="phnum" label="Phone Number" type="tel" placeholder="Enter your Phone Number" />
-                )}
-                <InputField htmlfor="password" label="Password" type="password" placeholder="Enter your Password" />
-                <InputField htmlfor="cnfpassword" label="Confirm Password" type="password" placeholder="Renter your Password" />
+
                 <button className="bg-white text-black mx-5 px-3 py-1 mt-6 font-semibold text-lg rounded-md">Enter</button>
+                <p className="text-white mx-5 mt-3 cursor-pointer mb-4">Don't have an account? <span className='font-bold'>Signup now</span></p>
             </div>
 
         </div>

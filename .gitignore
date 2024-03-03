@@ -1,2 +1,5 @@
 client/node_modules
 client/mistakes.txt
+server/node_modules
+server/.env
+server/package-lock.json
