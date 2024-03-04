@@ -1,6 +1,6 @@
 import React from 'react'
 
-function InputField({ htmlfor, label, type, placeholder, isRequired }) {
+function InputField({ htmlfor, label, type, placeholder, isRequired, value, setValue, isDisabled }) {
     return (
         <div className="mx-5 mt-4">
             <div className="flex items-center justify-start">
@@ -12,8 +12,10 @@ function InputField({ htmlfor, label, type, placeholder, isRequired }) {
                 id={htmlfor}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none"
                 placeholder={placeholder}
-                disabled={false}
+                disabled={isDisabled}
                 required={isRequired}
+                value={value}
+                onChange={e => setValue(e.target.value)}
             />
         </div>
     )

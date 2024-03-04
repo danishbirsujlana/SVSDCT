@@ -72,8 +72,8 @@ const verifyOtp = async (req, res) => {
     try {
         const { pass, name, phone, otp } = req.body;
         const photp = otpStore[phone];
-
-        if (photp && photp === otp) {
+        
+        if (photp && photp == otp) {
 
             let user = new UserModel();
             user.name = name;
@@ -94,10 +94,10 @@ const verifyOtp = async (req, res) => {
             await user.save()
             res.status(200).json(sendObject);
         } else {
-            res.status(400).json({ error: 'Invalid OTP' });
+            res.status(400).json({ message: 'Invalid OTP' });
         }
     } catch (err) {
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 };
 
@@ -108,7 +108,7 @@ const loginUser = async (req, res) => {
         if (user) {
             const isPasswordCorrect = await checkPassword(pass, user.password);
             if (!isPasswordCorrect) {
-                return res.status(404).json({
+                return res.status(400).json({
                     message: 'Invalid Password',
                 })
             }

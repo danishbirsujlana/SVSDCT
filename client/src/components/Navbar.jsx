@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import orgLogo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import AuthStatus from "../service/AuthService";
 
-function Link({ text, to }) {
+function LinkN({ text, to }) {
     return (
         <div className='px-4 py-2 mx-2 rounded text-orange-600 hover:bg-orange-600 hover:text-white font-semibold transition duration-200 ease-in-out'>
-            <a href={to}>{text}</a>
+            <Link to={to}>{text}</Link>
         </div>
     )
 }
 
 function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+    const token = AuthStatus.isAuthenticated();
     const toggleDropdown = () => {
         setDropdownOpen(prev => !prev);
     };
@@ -43,24 +45,26 @@ function Navbar() {
                     </button>
 
                     <div className={`absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden ${isDropdownOpen ? 'block' : 'hidden'}`}>
-                        <Link text="Home" to="#" dropdownItem={true} />
-                        <Link text="Message" to="#" dropdownItem={true} />
-                        <Link text="About Us" to="#" dropdownItem={true} />
-                        <Link text="Help" to="#" dropdownItem={true} />
+                        <LinkN text="Home" to="/ok1" dropdownItem={true} />
+                        <LinkN text="Message" to="/ok2" dropdownItem={true} />
+                        <LinkN text="About Us" to="/ok3" dropdownItem={true} />
+                        <LinkN text="Events" to="/ok4" dropdownItem={true} />
+                        <LinkN text="Help" to="/ok4" dropdownItem={true} />
                     </div>
                 </div>
             </div>
 
             <div className='hidden md:flex-1 md:flex md:justify-center md:items-center'>
-                <Link text="Home" to="#" />
-                <Link text="Message" to="#" />
-                <Link text="About Us" to="#" />
-                <Link text="Help" to="#" />
+                <LinkN text="Home" to="/ok1" />
+                <LinkN text="Message" to="/ok2" />
+                <LinkN text="About Us" to="/ok3" />
+                <LinkN text="Events" to="/ok4" />
+                <LinkN text="Help" to="/ok4" />
             </div>
 
             <div className="flex items-center">
                 <div className='rounded px-4 py-2 bg-neutral-50 transition duration-200 ease-in-out hover:bg-neutral-200'>
-                    <a href="#" className="font-bold text-black">Login</a>
+                    <Link to={!token ? "/login" : "/profile"} className="font-bold text-black">{!token ? "Login" : "Your Profile"}</Link>
                 </div>
             </div>
         </div>
