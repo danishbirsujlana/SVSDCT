@@ -6,7 +6,7 @@ import AuthStatus from "../service/AuthService";
 function LinkN({ text, to }) {
     return (
         <div className='px-4 py-2 mx-2 rounded text-orange-600 hover:bg-orange-600 hover:text-white font-semibold transition duration-200 ease-in-out'>
-            <a href={to}>{text}</a>
+            <Link to={to}>{text}</Link>
         </div>
     )
 }
@@ -45,19 +45,21 @@ function Navbar() {
                     </button>
 
                     <div className={`absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden ${isDropdownOpen ? 'block' : 'hidden'}`}>
-                        <LinkN text="Home" to="#" dropdownItem={true} />
-                        <LinkN text="Message" to="#" dropdownItem={true} />
-                        <LinkN text="About Us" to="#" dropdownItem={true} />
-                        <LinkN text="Help" to="#" dropdownItem={true} />
+                        <LinkN text="Home" to="/ok1" dropdownItem={true} />
+                        <LinkN text="Message" to="/ok2" dropdownItem={true} />
+                        <LinkN text="About Us" to="/ok3" dropdownItem={true} />
+                        <LinkN text="Events" to="/ok4" dropdownItem={true} />
+                        <LinkN text="Help" to="/ok4" dropdownItem={true} />
                     </div>
                 </div>
             </div>
 
             <div className='hidden md:flex-1 md:flex md:justify-center md:items-center'>
-                <LinkN text="Home" to="#" />
-                <LinkN text="Message" to="#" />
-                <LinkN text="About Us" to="#" />
-                <LinkN text="Help" to="#" />
+                <LinkN text="Home" to="/ok1" />
+                <LinkN text="Message" to="/ok2" />
+                <LinkN text="About Us" to="/ok3" />
+                <LinkN text="Events" to="/ok4" />
+                <LinkN text="Help" to="/ok4" />
             </div>
 
             <div className="flex items-center">

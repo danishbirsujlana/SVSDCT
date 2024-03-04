@@ -3,15 +3,27 @@ import InputField from '../components/InputField';
 import { Link } from 'react-router-dom';
 import { ENDPOINTS } from '../common';
 import { doPOST } from '../store/httpUtil/httpUtils';
+import toast from 'react-hot-toast';
+import AuthStatus from '../service/AuthService';
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [name, setName] = useState("");
     const [pass, setPass] = useState("");
     const rememberRef = useRef(false);
+    const navigate = useNavigate();
 
     const handleLoginLClick = async () => {
-        // const res = await doPOST(ENDPOINTS.login, { name, pass });
-        // console.log(res);
+        const res = await doPOST(ENDPOINTS.login, { name, pass });
+        if (res.status === 200) {
+            toast.success(res.data?.message);
+            if (rememberRef.current.checked)
+                AuthStatus.setToken(res.data?.data?.accessToken);
+            navigate("/");
+        }
+        else {
+            toast.error(res.data?.message);
+        }
     }
 
     return (

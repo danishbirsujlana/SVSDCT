@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PrivateRoute from './pages/PrivateRoute';
 import Signup from './pages/Signup';
+import { Toaster } from "react-hot-toast";
 
 function Main() {
   return (
@@ -31,6 +32,7 @@ function App() {
             isAuthenticated={isAuthenticated}
           /> */}
         </Routes>
+        <Toaster position='top-right' />
       </Router>
     </>
   )
