@@ -5,8 +5,11 @@ class AuthService {
     removeToken() {
         localStorage.removeItem('token');
     }
-    isAuthenticated() {
+    getToken() {
         return localStorage.getItem('token');
+    }
+    isAuthenticated() {
+        return !!localStorage.getItem('token');
     }
 }
 const AuthStatus = new AuthService();
