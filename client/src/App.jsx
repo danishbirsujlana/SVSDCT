@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import PrivateRoute from './pages/PrivateRoute';
+import PrivateRoutes from './pages/PrivateRoutes';
 import Signup from './pages/Signup';
 import { Toaster } from "react-hot-toast";
 
@@ -18,19 +18,15 @@ function Main() {
 }
 
 function App() {
-  const isAuthenticated = true;
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" exact element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Signup />} />
-          {/* <PrivateRoute
-            path="/dashboard"
-            component={Dashboard}
-            isAuthenticated={isAuthenticated}
-          /> */}
+          <Route element={<PrivateRoutes />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Signup />} />
+          </Route>
         </Routes>
         <Toaster position='top-right' />
       </Router>
