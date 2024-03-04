@@ -15,7 +15,8 @@ function Signup() {
     const otpRef = useRef(null);
     const navigate = useNavigate();
 
-    const sendOTPHandler = async () => {
+    const sendOTPHandler = async (e) => {
+        e.preventDefault();
         if (passs !== cnfPass) {
             toast.error("Passwords do not match");
         }
@@ -31,7 +32,8 @@ function Signup() {
         }
     }
 
-    const signupHandler = async () => {
+    const signupHandler = async (e) => {
+        e.preventDefault();
         const res = await doPOST(ENDPOINTS.verifyOtp, { phone: num, name: username, pass: passs, otp: otpRef.current.value });
         if (res.status === 200) {
             toast.success("Sign up successfull");

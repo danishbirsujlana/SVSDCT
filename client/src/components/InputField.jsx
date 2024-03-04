@@ -1,14 +1,18 @@
 import React from 'react'
 
-function InputField({ htmlfor, label, type, placeholder, isRequired, value, setValue, isDisabled }) {
+function InputField({ name, htmlfor, label, type, placeholder, isRequired, value, setValue, isDisabled, lightBg }) {
+    const labelC = "block text-sm font-bold mb-2 ";
+    const textCol = lightBg ? "text-gray-700" : "text-white";
+    const labelClass = labelC + textCol;
     return (
         <div className="mx-5 mt-4">
             <div className="flex items-center justify-start">
-                <label htmlFor={htmlfor} className="block text-white text-sm font-bold mb-2">{label}:</label>
+                <label htmlFor={htmlfor} className={labelClass}>{label}:</label>
                 {isRequired ? <span className="text-red-600 ms-2">*</span> : null}
             </div>
             <input
                 type={type}
+                name={name}
                 id={htmlfor}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none"
                 placeholder={placeholder}

@@ -18,11 +18,11 @@ function Navbar() {
         setDropdownOpen(prev => !prev);
     };
     return (
-        <div className='bg-black px-3 py-1 flex flex-wrap items-center'>
+        <div className='bg-black opacity-90 px-3 py-1 flex flex-wrap items-center'>
             <div className='mb-2 md:mb-0'>
-                <a href='/'>
+                <Link to='/'>
                     <img src={orgLogo} alt="Organization Logo" className="w-16" />
-                </a>
+                </Link>
             </div>
 
             <div className='md:hidden flex items-center ml-auto'>
@@ -45,8 +45,8 @@ function Navbar() {
                     </button>
 
                     <div className={`absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden ${isDropdownOpen ? 'block' : 'hidden'}`}>
-                        <LinkN text="Home" to="/ok1" dropdownItem={true} />
-                        <LinkN text="Message" to="/ok2" dropdownItem={true} />
+                        <LinkN text="Home" to="/" dropdownItem={true} />
+                        <LinkN text="Message" to="/connect" dropdownItem={true} />
                         <LinkN text="About Us" to="/ok3" dropdownItem={true} />
                         <LinkN text="Events" to="/ok4" dropdownItem={true} />
                         <LinkN text="Help" to="/ok4" dropdownItem={true} />
@@ -55,8 +55,8 @@ function Navbar() {
             </div>
 
             <div className='hidden md:flex-1 md:flex md:justify-center md:items-center'>
-                <LinkN text="Home" to="/ok1" />
-                <LinkN text="Message" to="/ok2" />
+                <LinkN text="Home" to="/" />
+                <LinkN text="Message" to="/connect" />
                 <LinkN text="About Us" to="/ok3" />
                 <LinkN text="Events" to="/ok4" />
                 <LinkN text="Help" to="/ok4" />

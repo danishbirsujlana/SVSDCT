@@ -1,5 +1,6 @@
 import { Parallax } from "react-parallax";
 import BG from "../assets/pic1.png";
+import { useNavigate } from "react-router-dom";
 
 function Btn({ text, onClick }) {
     return (
@@ -8,6 +9,7 @@ function Btn({ text, onClick }) {
 }
 
 function Main() {
+    const navigate = useNavigate();
     return (
         <div>
             <Parallax strength={400} bgImage={BG}>
@@ -15,7 +17,7 @@ function Main() {
                     <div>
                         <h1 className="font-semibold text-3xl text-center text-white p-3">Swami Vivekananda Social Development and Charitable Trust Kurukshetra</h1>
                         <div className="flex justify-center items-center">
-                            <Btn text="Mail Us" onClick={() => alert("Mail Us")} />
+                            <Btn text="Mail Us" onClick={() => navigate("/connect")} />
                             <Btn text="Donate" onClick={() => alert("Donate")} />
                         </div>
                     </div>

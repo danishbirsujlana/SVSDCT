@@ -5,14 +5,15 @@ import Login from "./pages/Login";
 import PrivateRoutes from './pages/PrivateRoutes';
 import Signup from './pages/Signup';
 import { Toaster } from "react-hot-toast";
+import Contact from './pages/Contact';
 
-function Main() {
+function Main({ children }) {
   return (
     <div>
       <div className="fixed w-full top-0 z-10">
         <Navbar />
       </div>
-      <Home />
+      {children}
     </div>
   )
 }
@@ -22,7 +23,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" exact element={<Main />} />
+          <Route path="/" exact element={<Main><Home /></Main>} />
+          <Route path="/connect" element={<Main><Contact /></Main>} />
           <Route element={<PrivateRoutes />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Signup />} />

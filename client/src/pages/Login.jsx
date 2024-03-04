@@ -13,7 +13,8 @@ function Login() {
     const rememberRef = useRef(false);
     const navigate = useNavigate();
 
-    const handleLoginLClick = async () => {
+    const handleLoginLClick = async (e) => {
+        e.preventDefault();
         const res = await doPOST(ENDPOINTS.login, { name, pass });
         if (res.status === 200) {
             toast.success(res.data?.message);
