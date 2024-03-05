@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const CONFIG = require('./config/config');
 const authRouter = require('./routes/authRoutes');
+const genRouter = require('./routes/generalRoutes');
 
 const app = express();
 app.use(cors());
@@ -21,6 +22,7 @@ const connectDB = async () => {
 connectDB();
 
 app.use('/api/auth', authRouter);
+app.use('/api', genRouter);
 app.get('/api', (req, res) => {
     res.send("Welcome");
 });

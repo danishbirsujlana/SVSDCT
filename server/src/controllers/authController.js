@@ -160,4 +160,4 @@ const logOut = async (req, res) => {
     }
 };
 
-module.exports = { isNull, signupOTP, verifyOtp, loginUser, logOut };
+module.exports = { isNull, signupOTP, verifyOtp, loginUser, logOut, isValidEmail };
